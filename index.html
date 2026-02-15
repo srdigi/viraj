@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viraj Analyst</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+min-height:100vh;
+background:
+linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.9)),
+url('https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif') no-repeat center center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+padding:20px;
+overflow:hidden;
+}
+
+.light{
+position:absolute;
+width:200%;
+height:200%;
+background:radial-gradient(circle, rgba(0,255,200,0.1), transparent 70%);
+animation:moveLight 6s infinite alternate;
+}
+
+@keyframes moveLight{
+from{transform:translate(-20%, -20%);}
+to{transform:translate(20%, 20%);}
+}
+
+.container{
+position:relative;
+width:100%;
+max-width:420px;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(12px);
+padding:30px 20px;
+border-radius:20px;
+box-shadow:0 0 50px rgba(0,255,150,0.4);
+z-index:2;
+animation:fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.title{
+font-size:24px;
+font-weight:800;
+color:#00ffcc;
+text-shadow:0 0 10px #00ffcc,0 0 20px #00ffcc;
+animation:flicker 2s infinite alternate;
+margin-bottom:10px;
+}
+
+@keyframes flicker{
+from{text-shadow:0 0 10px #00ffcc;}
+to{text-shadow:0 0 25px #00ffcc,0 0 50px #00ffcc;}
+}
+
+.subscribers{
+font-size:14px;
+color:#ccc;
+margin-bottom:15px;
+}
+
+.accuracy{
+font-size:16px;
+color:#00ff99;
+margin-bottom:15px;
+text-shadow:0 0 10px #00ff99;
+}
+
+.countdown{
+margin-bottom:15px;
+color:#ffcc00;
+font-size:14px;
+}
+
+.features{
+font-size:13px;
+margin-bottom:20px;
+line-height:1.6;
+}
+
+.neon-btn{
+display:inline-block;
+padding:15px 28px;
+border-radius:50px;
+background:#00ffcc;
+color:black;
+font-weight:bold;
+text-decoration:none;
+font-size:16px;
+box-shadow:0 0 15px #00ffcc,0 0 40px #00ffcc;
+animation:pulse 1.5s infinite;
+transition:0.3s;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 10px #00ffcc;}
+50%{box-shadow:0 0 40px #00ffcc;}
+100%{box-shadow:0 0 10px #00ffcc;}
+}
+
+.neon-btn:hover{
+transform:scale(1.1);
+}
+
+.footer{
+margin-top:20px;
+font-size:11px;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="light"></div>
+
+<div class="container">
+
+<div class="title">𝐕𝐢𝐫𝐚𝐣 𝐀𝐧𝐚𝐥𝐲𝐬𝐭</div>
+
+<div class="subscribers">
+Subscribers: <span id="counter">23000</span>
+</div>
+
+<div class="accuracy">
+98% Accuracy Rate 🔥
+</div>
+
+<div class="countdown">
+Next Toss Update In: <span id="timer"></span>
+</div>
+
+<div class="features">
+⚡ 8 Years Cricket Analysis Experience<br>
+⚡ Match Toss Insights<br>
+⚡ Pitch & Playing XI Study<br>
+⚡ Team Strategy Breakdown
+</div>
+
+<a href="https://t.me/+CkIBx6BMR2U1MGM1" class="neon-btn">
+🚀 JOIN FREE TELEGRAM
+</a>
+
+<div class="footer">
+For Educational & Informational Purpose Only
+</div>
+
+</div>
+
+<script>
+// Subscriber Counter Animation
+let count = 23000;
+let target = 23815;
+let counter = document.getElementById("counter");
+
+let interval = setInterval(()=>{
+count++;
+counter.innerText = count.toLocaleString();
+if(count >= target){
+clearInterval(interval);
+}
+},40);
+
+// 24 Hour Countdown
+let countdownDate = new Date().getTime() + (24*60*60*1000);
+
+let timer = setInterval(function() {
+let now = new Date().getTime();
+let distance = countdownDate - now;
+
+let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+let seconds = Math.floor((distance % (1000*60)) / 1000);
+
+document.getElementById("timer").innerHTML =
+hours + "h " + minutes + "m " + seconds + "s ";
+
+if(distance < 0) {
+clearInterval(timer);
+document.getElementById("timer").innerHTML = "Live Now 🔥";
+}
+},1000);
+</script>
+
+</body>
+</html>
